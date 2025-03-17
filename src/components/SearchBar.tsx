@@ -9,7 +9,7 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-const SearchBar = ({ onSearch, className, placeholder = 'Search by route number...' }: SearchBarProps) => {
+const SearchBar = ({ onSearch, className, placeholder = 'Search by route (e.g., 271 for Bellevue)...' }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const handleSubmit = (e: FormEvent) => {

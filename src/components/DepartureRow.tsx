@@ -41,6 +41,18 @@ const DepartureRow = ({ departure, index }: DepartureRowProps) => {
     })
   };
 
+  // Handle special styling for different route types (RapidRide, Link, Sounder)
+  const getRouteStyle = (routeNumber: string) => {
+    if (routeNumber === 'Link') {
+      return "bg-red-600 text-white px-2 py-0.5 rounded";
+    } else if (routeNumber === 'Sounder') {
+      return "bg-green-700 text-white px-2 py-0.5 rounded";
+    } else if (['A', 'B', 'C', 'D', 'E', 'F'].includes(routeNumber)) {
+      return "bg-board-accent text-black font-bold px-2 py-0.5 rounded";
+    }
+    return "";
+  };
+
   return (
     <motion.div 
       className="board-row"
@@ -50,7 +62,9 @@ const DepartureRow = ({ departure, index }: DepartureRowProps) => {
       custom={index}
     >
       <div className="text-board-accent font-mono text-lg font-medium">
-        {departure.routeNumber}
+        <span className={getRouteStyle(departure.routeNumber)}>
+          {departure.routeNumber}
+        </span>
       </div>
       
       <div className="text-left font-medium truncate">

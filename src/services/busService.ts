@@ -46,40 +46,62 @@ export interface BusDeparture {
   raw: BusArrival;
 }
 
-// Since we don't have a real OneBusAway API key, we'll create mock data
+// Since we don't have a real OneBusAway API key, we'll create mock data with Washington routes
 const generateMockData = (): BusDeparture[] => {
-  const routes = ['1', '2', '3', '7', '8', '10', '12', '13', '15', '18', '22', '25', '28', '40', '44', '70', '101', '120'];
+  // Washington routes with focus on Seattle and Bellevue area
+  const routes = [
+    '271', '255', '550', '554', // Bellevue-Seattle area
+    '226', '230', '240', '241', '245', '249', // Bellevue local
+    '1', '2', '3', '4', '7', '8', '10', '12', // Seattle routes
+    '40', '44', '70', '101', '120', '150', // Seattle/King County
+    '512', '522', '535', '545', '560', '566', // Sound Transit
+    'B', 'C', 'D', 'E', 'F', // Rapid Ride routes
+    'Link', 'Sounder' // Light rail and commuter rail
+  ];
+  
   const destinations = [
-    'Downtown Transit Center',
+    'Bellevue Transit Center',
+    'Redmond Transit Center',
+    'Kirkland Transit Center',
+    'Overlake Transit Center',
+    'Downtown Seattle',
     'University District',
     'Capitol Hill',
-    'Northgate Mall',
-    'Ballard',
-    'West Seattle Junction',
-    'Rainier Beach',
-    'South Lake Union',
-    'Bellevue Transit Center',
-    'Redmond Transit Center'
+    'Northgate Station',
+    'Lynnwood Transit Center',
+    'Issaquah Transit Center',
+    'Totem Lake Transit Center',
+    'South Kirkland P&R',
+    'Eastgate P&R',
+    'Bothell UW Campus',
+    'Factoria',
+    'Woodinville P&R'
   ];
   
   const currentStops = [
-    'Pike Street & 3rd Ave',
-    'Broadway & John St',
-    'University Way & 45th St',
-    'Leary Way NW & 15th Ave NW',
-    'California Ave SW & Alaska St',
-    'Madison St & 3rd Ave',
-    'Rainier Ave S & S Jackson St',
-    'Westlake Ave & Denny Way',
+    'Bellevue Transit Center Bay 1',
+    'Bellevue Way & NE 8th St',
     'NE 8th St & 108th Ave NE',
-    'Overlake Transit Center'
+    'Overlake Transit Center',
+    'Microsoft Campus',
+    'Redmond Transit Center',
+    'Kirkland Transit Center',
+    'NE 85th St & 124th Ave NE',
+    'Totem Lake Transit Center',
+    'Pike Street & 3rd Ave',
+    'Pine Street & 4th Ave',
+    'University Way & NE 45th St',
+    'Westlake Station',
+    'International District Station',
+    'Capitol Hill Station',
+    'Northgate Station'
   ];
   
   const statuses: ('on-time' | 'delayed' | 'departed' | 'approaching')[] = ['on-time', 'delayed', 'on-time', 'approaching'];
   
   const now = new Date();
   
-  return Array.from({ length: 20 }, (_, i) => {
+  return Array.from({ length: 25 }, (_, i) => {
     const routeIndex = Math.floor(Math.random() * routes.length);
     const destIndex = Math.floor(Math.random() * destinations.length);
     const stopIndex = Math.floor(Math.random() * currentStops.length);

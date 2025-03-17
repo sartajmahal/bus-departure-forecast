@@ -33,7 +33,7 @@ const Index = () => {
           >
             <div className="flex items-center mb-2">
               <Bus className="h-8 w-8 text-board-accent mr-2" />
-              <h1 className="text-4xl font-bold tracking-tight">Bus Departure Board</h1>
+              <h1 className="text-4xl font-bold tracking-tight">Washington Bus Tracker</h1>
             </div>
             <div className="flex items-center mt-2 mb-6 text-gray-400">
               <Clock className="h-5 w-5 mr-2" />
@@ -48,7 +48,7 @@ const Index = () => {
             </div>
             
             <p className="text-lg text-gray-300 max-w-2xl">
-              Real-time bus departure information with current locations and estimated arrival times.
+              Real-time Washington bus departure information for Seattle, Bellevue, and surrounding areas.
             </p>
           </motion.div>
         </header>
@@ -59,7 +59,7 @@ const Index = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch} placeholder="Search by route number (e.g., 271 for Bellevue)..." />
         </motion.div>
         
         <motion.div
@@ -72,7 +72,7 @@ const Index = () => {
         
         <footer className="mt-12 text-center text-gray-500 text-sm">
           <p>
-            Note: This is a demonstration using simulated data. 
+            Note: This is a demonstration using simulated data for Washington state bus routes. 
             In a production environment, this would connect to the real OneBusAway API.
           </p>
         </footer>
